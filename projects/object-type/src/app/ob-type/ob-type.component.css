@@ -1,0 +1,31 @@
+
+
+.minButton {
+    width: 80px;
+    height: 35px;
+    background-color: #015da5;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+}
+
+.minButton:hover {
+    background: #017cc2;
+}
+
+.otherButton {
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 80px;
+    height: 35px;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+}
+
+.otherButton:hover {
+    background: #8f969c;
+}

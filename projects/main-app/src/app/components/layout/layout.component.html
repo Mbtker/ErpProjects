@@ -1,0 +1,76 @@
+<div class="navbar navbar-expand-sm" style="height: 110px; background: linear-gradient(#1485c7, #7ac0e6);">
+    <div style="position: absolute; top: 0; width: 100%; color: white; text-align: center; background: linear-gradient(to right, #ffffff00, #ffffff0c, #ffffff00);">
+      <div style="width: 100%;">
+        <label style="font-size: 14px;">Ministry Of Defence</label>
+        <label style="margin-left: 30px; margin-right: 30px; font-size: 13px;">|</label>
+        <label style="font-size: 14px;">Medical Services Department</label>
+        <label style="margin-left: 30px; margin-right: 30px; font-size: 13px;">|</label>
+        <label style="font-size: 14px;">Prince Sultan Military Medical City</label>
+        <label style="margin-left: 30px; margin-right: 30px; font-size: 13px;">|</label>
+        <label style="font-size: 14px;">Riyadh</label>
+      </div>
+    </div>
+    <div style="width: 100%; height: 110px; display: flex; margin-left: auto; margin-right: auto;">
+      <div style="margin: 15px 15px 15px 60px;">
+        <img style="width: 120px;" src="../../../assets/img/watheq_logo.gif" alt="watheg">
+      </div>
+      <div style="display: flex; flex-direction: column; justify-content: space-between; height: 110px; width: 500px; margin-left: 45px;">
+        <h3 style="margin-top: auto; padding: 5px; font-size: 30px; color: #ffffff;">Resources Planning</h3>
+      </div>
+      <div style="height: 110px; width: 300px; position: absolute; right: 2.5%; margin-left: auto; margin-right: auto; align-items: center; align-content: center; text-align: center;">  
+        <p style="width: 300px; text-align: center; color: #fff; font-weight: 400; cursor: pointer;">عربي</p>
+        <p style="text-align: center; color: #fff; font-weight: 200; font-size: 14px; width: 300px; background: linear-gradient(to right, #ffffff00, #ffffff21, #ffffff00);">{{LoginName}}</p>
+        <button class="btn btn-outline-secondary btn-sm logout_bt" style="border: 1px solid #ffffff6e; color: #fff; width: 100px; font-size: 14px; margin-top: -10px;" type="button" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</button>
+      </div>
+    </div>
+  </div>
+  <div style="position: absolute; width: 100%; height: calc(100% - 110px); display: flex;">
+    <div style="width: 100%;">
+      <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="width: 250px; background: linear-gradient(to bottom, #78bfe5, #78bfe54b); border-left: 0.5px solid #a8a8a87a; border-right: 0.5px solid #a8a8a886;">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100" style="position: relative; margin-top: -110px;">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu" style="margin-top: 110px; padding: 10px;">
+                      <li class="navitem" style="margin: 20px 5px 5px 5px; border: 1px solid #495bc450; border-radius: 20px; padding: 8px; min-width: 150px;">
+                        <a (click)="(onObjectType())" class="slideItem">
+                          Object Type
+                        </a>
+                    </li>
+                    <li class="navitem" style="margin: 20px 5px 5px 5px; border: 1px solid #495bc450; border-radius: 20px; padding: 8px; min-width: 150px;">
+                      <a (click)="(onObjectData())" class="slideItem">
+                        Object data
+                      </a>
+                  </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="width: calc(98% - 250px); margin-left: auto; margin-right: auto;">
+              @if(isLoading) {
+                <app-spinner></app-spinner>
+              }
+              @if(!isLoading) {
+                <router-outlet></router-outlet>
+              }
+            </div>
+        </div>
+    </div>
+  
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <label>Are you sure to logout?</label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 100px; background: #1485c7;" (click)="(onLogout())">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

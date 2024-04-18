@@ -1,0 +1,117 @@
+
+<div style="margin-top: 10px; width: 93%; border: 1px solid #e7e7e7; border-radius: 20px; padding: 10px;">
+  <div>
+    <form action="#">
+      <div class="mb-3" >
+        <label for="recipient-name" >Arabic name:</label>
+        <input style="width: 200px; border: 1px solid #dee2e6; border-radius: 5px; margin-left: 10px; padding: 3px;" type="text" [(ngModel)]="ObjectTObject.objectTypeArDesc" id="objectTypeArDesc" name="objectTypeArDesc" placeholder="Arabic name" required/>
+        <label for="recipient-name" class="col-form-label" style="margin-left: 10px;">English name:</label>
+        <input style="width: 200px; border: 1px solid #dee2e6; border-radius: 5px; margin-left: 10px; padding: 3px;" type="text" [(ngModel)]="ObjectTObject.objectTypeEnDesc" id="objectTypeEnDesc" name="objectTypeEnDesc" placeholder="English name" required/>
+        <label for="recipient-name" class="col-form-label" style="margin-left: 10px;">Security:</label>
+        <input style="width: 200px; border: 1px solid #dee2e6; border-radius: 5px; margin-left: 10px;" type="checkbox" [(ngModel)]="ObjectTObject.securityDataType" id="securityDataType" name="securityDataType"/>
+      </div>  
+      <div class="modal-footer">
+        <button class="otherButton" type="button" (click)="(onClear())">Clear</button>
+        <button class="minButton" type="button" (click)="(onSearch())">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div style="width: 93%;">
+  <div  style="width: 100%; text-align: left; color: white; background: linear-gradient(to right, #015da5, #015ea594, #015ea541); border-top-left-radius: 20px; border-top-right-radius: 20px; margin-top: 10px; padding: 10px 10px 10px 20px; font-size: 15px; font-weight: 600;">
+    <label style="padding: 3px;">Object type</label>
+    <button type="button" style="float: right; background: none; border: none;" data-bs-toggle="modal" data-bs-target="#addNewModal" data-bs-whatever="@getbootstrap"><i style="float: right; margin-right: 20px; font-size: 20px; color: black; cursor: pointer;" class="bi bi-plus-lg"></i></button>
+  </div>
+    <div style="width: 100%; margin-left: auto; margin-right: auto;">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Arabic name</th>
+                <th scope="col">English name</th>
+                <th style="text-align: center;" scope="col">Security</th>
+                <th style="text-align: center;" scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                @for (item of myArray; track item) {
+                    <tr>
+                        <td>{{ item['id'] }}</td>
+                        <td>{{ item['objectTypeArDesc'] }}</td>
+                        <td>{{ item['objectTypeEnDesc'] }}</td>
+                        <td style="text-align: center;">{{ item['securityDataType'] }}</td>
+                        <td style="text-align: center;">
+                          <button (click)="onSelectRow(item)"  data-bs-toggle="modal" data-bs-target="#editModal" style="cursor: pointer; background: none; border: none;" class="bi bi-pencil-square"></button> 
+                        </td>
+                    </tr>
+                }
+            </tbody>
+          </table>
+    </div>
+  </div>
+  
+
+  
+<!-- New Modal -->
+<div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Object type</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Arabic name:</label>
+            <input type="text" [(ngModel)]="ObjectTObject.objectTypeArDesc" id="objectTypeArDesc" name="objectTypeArDesc" class="form-control form-control-lg" placeholder="Arabic name" required/>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">English name:</label>
+            <input type="text" [(ngModel)]="ObjectTObject.objectTypeEnDesc" id="objectTypeEnDesc" name="objectTypeEnDesc" class="form-control form-control-lg" placeholder="English name" required/>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Security:</label>
+            <input style="margin-left: 10px; margin-right: 10px;" type="checkbox" [(ngModel)]="ObjectTObject.securityDataType" id="securityDataType" name="securityDataType"/>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" closebutton>Cancel</button>
+          <button type="button" (click)="(onCreate())" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Arabic name:</label>
+            <input type="text" [(ngModel)]="ObjectTObjectEdit.objectTypeArDesc" id="objectTypeArDesc" name="objectTypeArDesc" class="form-control form-control-lg" placeholder="Arabic name" required/>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">English name:</label>
+            <input type="text" [(ngModel)]="ObjectTObjectEdit.objectTypeEnDesc" id="objectTypeEnDesc" name="objectTypeEnDesc" class="form-control form-control-lg" placeholder="English name" required/>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Security:</label>
+            <input style="margin-left: 10px; margin-right: 10px;" type="checkbox" [(ngModel)]="ObjectTObjectEdit.securityDataType" id="securityDataType" name="securityDataType"/>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" closebutton>Cancel</button>
+          <button type="button" (click)="(onEdit())" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

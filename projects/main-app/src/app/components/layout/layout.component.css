@@ -1,0 +1,22 @@
+
+.slideItem {
+    padding: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.navitem {
+    cursor: pointer;
+}
+
+.navitem:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.041);
+}
+
+.active {
+    text-emphasis-color: #fff;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.103);
+}
